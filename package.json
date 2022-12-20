@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "@octokit/rest": "^19.0.5",
+    "chalk": "^5.2.0",
     "csv-parse": "^5.3.3",
     "csv-stringify": "^6.2.3",
     "dotenv": "^16.0.3",
