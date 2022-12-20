@@ -33,7 +33,7 @@ Set a Personal Access Token either as a Codespaces secret or in a `.env` file wh
 ### Node.js
 
 ```sh
-mv .env.example .env
+cp .env.example .env 
 
 npm install
 npm start

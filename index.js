@@ -2,6 +2,7 @@ import inquirer from 'inquirer'
 import { Octokit } from '@octokit/rest'
 import { stringify } from 'csv-stringify/sync'
 import { parse } from 'csv-parse/sync'
+import chalk from 'chalk'
 import * as fs from 'fs'
 import * as dotenv from 'dotenv'
 dotenv.config()
@@ -28,7 +29,7 @@ const repoSelect = []
       message: 'Begin the transfer process by retrieving the available organizations'
     }
 
-    console.log('\x1b[44m Welcome to the GitHub Repo Transfer Utility \x1b[0m')
+    console.log(chalk.bgBlue('Welcome to the GitHub Repo Transfer Utility'))
 
     inquirer.prompt(orgPrompt).then((answers) => {
       if (answers.start === 'Start') {
@@ -277,7 +278,7 @@ async function selectRepos() {
             const totalSelected = repoSelect.length
             const totalAvailable = allRepos.length
 
-            console.log(`\x1b[44m You have selected ${totalSelected} repositories out of ${totalAvailable} available repositories \x1b[0m`)
+            console.log(chalk.bgBlue(`You have selected ${totalSelected} repositories out of ${totalAvailable} available repositories`))
             getTeamIds()
           })
         } else {
@@ -463,9 +464,9 @@ async function parseCSV() {
         team_ids: JSON.parse(row.teamId)
       })
       if (data.status === 202) {
-        console.log(`\x1b[32m Transferred ${row.repo} from ${row.srcOrg} to ${row.destOrg} successfully \x1b[0m`)
+        console.log(chalk.green(`Transferred ${row.repo} from ${row.srcOrg} to ${row.destOrg} successfully`))
       } else {
-        console.log(`\x1b[31m Error transferring ${row.repo} from ${row.srcOrg} to ${row.destOrg} with status ${data.status} \x1b[0m`)
+        console.log(chalk.red(`Error transferring ${row.repo} from ${row.srcOrg} to ${row.destOrg} with status ${data.status}`))
       }
     }
   } catch (err) {
@@ -484,9 +485,9 @@ async function transferRepos() {
         team_ids: teamSelect
       })
       if (data.status === 202) {
-        console.log(`\x1b[32m Transferred ${repo} from ${srcSelect} to ${destSelect} successfully \x1b[0m`)
+        console.log(chalk.green(`Transferred ${repo} from ${srcSelect} to ${destSelect} successfully`))
       } else {
-        console.log(`\x1b[31m Error transferring ${repo} from ${srcSelect} to ${destSelect} with status ${data.status} \x1b[0m`)
+        console.log(chalk.red(`Error transferring ${repo} from ${srcSelect} to ${destSelect} with status ${data.status}`))
       }
     }
   } catch (err) {
