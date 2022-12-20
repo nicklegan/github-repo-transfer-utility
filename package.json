@@ -1,0 +1,35 @@
+{
+  "name": "github-repo-transfer-utility",
+  "version": "1.0.0",
+  "description": "A utility to batch transfer GitHub repositories from one organization or user to another.",
+  "author": {
+    "name": "GitHub Expert Services",
+    "email": "services@github.com",
+    "url": "https://services.github.com"
+  },
+  "contributors": [
+    {
+      "name": "Nick Nagel",
+      "email": "nicklegan@github.com",
+      "url": "https://github.com/nicklegan"
+    }
+  ],
+  "license": "MIT",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": "github:nicklegan/github-repo-transfer-utility",
+  "engines": {
+    "node": ">=16",
+    "npm": ">=7"
+  },
+  "dependencies": {
+    "@octokit/rest": "^19.0.5",
+    "csv-parse": "^5.3.3",
+    "csv-stringify": "^6.2.3",
+    "dotenv": "^16.0.3",
+    "inquirer": "^9.1.4"
+  }
+}
