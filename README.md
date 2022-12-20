@@ -22,7 +22,11 @@ Set a Personal Access Token either as a Codespaces secret or in a `.env` file wh
 
 :bulb: Your personal user account will show up first in the list of available organizations.
 
-:bulb: As every repository transfer sends an email to the repository owner, you may want to use a machine user with separate email instead to avoid a full mailbox.
+:bulb: As every repository transfer sends an email to the repository owner you may want to use a machine user with separate email instead to avoid a full mailbox.
+
+## Deployment
+
+Choose between running in a Codespace, Docker or Node.
 
 ### Codespaces
 
@@ -30,10 +34,27 @@ Set a Personal Access Token either as a Codespaces secret or in a `.env` file wh
 2. Set your Personal Access Token as a [Codespaces secret](https://docs.github.com/codespaces/managing-codespaces-for-your-organization/managing-encrypted-secrets-for-your-repository-and-organization-for-github-codespaces#adding-secrets-for-a-repository)
 3. [Create a codespace for your repository](https://docs.github.com/codespaces/developing-in-codespaces/creating-a-codespace-for-a-repository#creating-a-codespace-for-a-repository)
 
-### Node.js
+### Docker
 
 ```sh
-cp .env.example .env 
+cp .env.example .env
+npm install
+
+# terminal 1
+docker build -t repo-transfer-utility .
+docker run -it repo-transfer-utility npm start
+
+# terminal 2
+docker container ls
+docker exec -it <container-id> /bin/sh
+
+vi repos.csv # (edit generated CSV when using manual mode)
+```
+
+### Node
+
+```sh
+cp .env.example .env
 
 npm install
 npm start
