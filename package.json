@@ -26,7 +26,7 @@
     "npm": ">=7"
   },
   "dependencies": {
-    "@octokit/rest": "^19.0.5",
+    "@octokit/rest": "^19.0.7",
     "chalk": "^5.2.0",
     "csv-parse": "^5.3.3",
     "csv-stringify": "^6.2.3",
